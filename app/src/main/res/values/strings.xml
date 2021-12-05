@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">TDBMKotlin</string>
+    <string name="menu_tv_shows_label">Shows</string>
+    <string name="menu_movies_label">Movies</string>
 </resources>
