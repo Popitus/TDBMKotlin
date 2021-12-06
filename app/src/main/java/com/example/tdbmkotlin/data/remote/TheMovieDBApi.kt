@@ -7,9 +7,11 @@ import retrofit2.http.GET
 
 interface TheMovieDBApi {
 
+    // Tv Shows
     @GET("/3/tv/top_rated")
     suspend fun getTopRatedTvShows(): PagedResultData<TvShowItemNetworkData>
 
+    // Movies
     @GET("/3/movie/popular")
     suspend fun getPopularMovies(): PagedResultData<MovieItemNetworkData>
 }

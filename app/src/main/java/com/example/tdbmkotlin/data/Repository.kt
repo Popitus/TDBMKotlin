@@ -71,7 +71,6 @@ class Repository @Inject constructor(
         return localResult
     }
 
-
     private suspend fun getRemotePopularMovies(): List<MovieItemNetworkData> {
         val remoteResult = remoteDataSource.getPopularMovies()
         Log.d("Repository", "Resultados movies remotos: ${remoteResult.size}")

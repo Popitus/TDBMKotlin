@@ -51,6 +51,8 @@ class TvShowAdapter: RecyclerView.Adapter<TvShowAdapter.ImageViewHolder>() {
                     .load("https://image.tmdb.org/t/p/w500/${item.posterPath}")
                     .placeholder(ContextCompat.getDrawable(itemView.context, R.mipmap.ic_launcher))
                     .into(image)
+
+                votedRating.text = "%.2f".format(item.voted)
             }
         }
 

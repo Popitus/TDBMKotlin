@@ -8,4 +8,5 @@ data class TvShowItemNetworkData(
     @Json(name = "poster_path") var posterPath: String?,
     @Json(name = "vote_average") var voteAverage: Double?,
     @Json(name = "overview") var overview: String?,
+
 )

@@ -9,4 +9,5 @@ data class TvShowItemLocalData(
     @PrimaryKey @ColumnInfo(name = "id") var id: Long?,
     @ColumnInfo(name = "name") var name: String?,
     @ColumnInfo(name = "poster_path") var posterPath: String?,
+    @ColumnInfo(name = "voted_average") var voted: Double?,
 )

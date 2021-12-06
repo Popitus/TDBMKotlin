@@ -11,10 +11,10 @@ class TvShowPresentationMapper @Inject constructor() {
     }
 
     fun mapDataToPresentation(data: TvShowItemData): TvShowPresentation {
-        return TvShowPresentation(data.id, data.name, data.posterPath)
+        return TvShowPresentation(data.id, data.name, data.posterPath, data.voted)
     }
 
     fun mapPresentationToData(presentation: TvShowPresentation): TvShowItemData {
-        return TvShowItemData(presentation.id, presentation.name, presentation.posterPath)
+        return TvShowItemData(presentation.id, presentation.name, presentation.posterPath, presentation.voted)
     }
 }

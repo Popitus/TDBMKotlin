@@ -41,5 +41,9 @@ class LocalDataSource @Inject constructor(private val dao: TheMovieDBDAO) {
         dao.insertPopularMovies(itemLocalData)
     }
 
+    fun deleteAllMovies(){
+        dao.deleteAllMovies()
+    }
+
 
 }

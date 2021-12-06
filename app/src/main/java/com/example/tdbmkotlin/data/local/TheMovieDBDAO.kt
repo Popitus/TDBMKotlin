@@ -40,4 +40,8 @@ interface TheMovieDBDAO {
 
     @Insert
     fun insertPopularMovies(items: List<MovieItemLocalData>)
+
+    @Query("Delete from movies")
+    fun deleteAllMovies()
+
 }

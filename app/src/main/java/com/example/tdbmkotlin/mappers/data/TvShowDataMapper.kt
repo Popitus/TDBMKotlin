@@ -8,7 +8,7 @@ import javax.inject.Inject
 class TvShowDataMapper @Inject constructor() {
 
     private fun mapLocalToData(local: TvShowItemLocalData): TvShowItemData {
-        return TvShowItemData(local.id, local.name, local.posterPath)
+        return TvShowItemData(local.id, local.name, local.posterPath, local.voted)
     }
 
     fun mapLocalToData(localList: List<TvShowItemLocalData>): List<TvShowItemData> {
@@ -16,7 +16,7 @@ class TvShowDataMapper @Inject constructor() {
     }
 
     fun mapDataToLocal(local: TvShowItemData): TvShowItemLocalData {
-        return TvShowItemLocalData(local.id, local.name, local.posterPath)
+        return TvShowItemLocalData(local.id, local.name, local.posterPath, local.voted)
     }
 
     fun mapDataToLocal(localList: List<TvShowItemData>): List<TvShowItemLocalData> {
@@ -24,7 +24,7 @@ class TvShowDataMapper @Inject constructor() {
     }
 
     private fun mapNetworkToData(local: TvShowItemNetworkData): TvShowItemData {
-        return TvShowItemData(local.id, local.name, local.posterPath)
+        return TvShowItemData(local.id, local.name, local.posterPath, local.voteAverage)
     }
 
     fun mapNetworkToData(localList: List<TvShowItemNetworkData>): List<TvShowItemData> {

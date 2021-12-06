@@ -33,7 +33,7 @@ class TvShowViewModel @Inject constructor(private val repository: Repository,
             val result = withContext(Dispatchers.IO) {
                 repository.getTvShows()
             }
-            val sortedResult= result.sortedBy { it.name }
+            val sortedResult= result.sortedByDescending { it.voted }
             _images.postValue(mapper.mapDataToPresentation(sortedResult))
         }
     }
