@@ -8,20 +8,19 @@ import com.example.tdbmkotlin.mappers.presentation.TvShowPresentationMapper
 import com.example.tdbmkotlin.model.presentation.TvShowPresentation
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
-class TvShowViewModel @Inject constructor(private val repository: Repository, private val mapper: TvShowPresentationMapper): ViewModel(){
+class TvShowViewModel @Inject constructor(private val repository: Repository,
+                                          private val mapper: TvShowPresentationMapper): ViewModel(){
 
     /** Properties **/
     private val _images: MutableLiveData<List<TvShowPresentation>> by lazy {
         MutableLiveData<List<TvShowPresentation>>()
     }
     val images: MutableLiveData<List<TvShowPresentation>> get() = _images
-    private var coroutine: Job? = null
 
     /** initialization **/
     init {

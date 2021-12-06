@@ -8,11 +8,13 @@ class RemoteDataSource @Inject constructor(private val api: TheMovieDBApi) {
 
     /** Functions **/
 
+    // Shows (Tops)
     suspend fun getTopShows(): List<TvShowItemNetworkData> {
         val pagedResultData = api.getTopRatedTvShows()
         return pagedResultData.results
     }
 
+    // Movies (Popular)
     suspend fun getPopularMovies(): List<MovieItemNetworkData> {
         val pagedResultData = api.getPopularMovies()
         return pagedResultData.results

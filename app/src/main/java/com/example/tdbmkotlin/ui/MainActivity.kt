@@ -7,6 +7,7 @@ import android.view.MenuItem
 import androidx.core.os.bundleOf
 import com.example.tdbmkotlin.R
 import com.example.tdbmkotlin.databinding.ActivityMainBinding
+import com.example.tdbmkotlin.ui.movies.MovieFragment
 import com.example.tdbmkotlin.ui.tvshows.TvShowFragment
 import com.google.android.material.navigation.NavigationBarView
 import dagger.hilt.android.AndroidEntryPoint
@@ -34,29 +35,31 @@ class MainActivity : AppCompatActivity() {
         with(binding) {
 
             /** bottom Navigation **/
-            bottomNavigationView.setOnItemSelectedListener(object: NavigationBarView.OnItemSelectedListener {
-                override fun onNavigationItemSelected(item: MenuItem): Boolean {
-                    when(item.itemId){
-                        R.id.menu_tv_shows -> {
-                            Log.d("ActivityMain", "Menu top clicked")
-                            supportFragmentManager.beginTransaction()
-                                .replace(binding.fragmentContainer.id, TvShowFragment::class.java, bundleOf())
-                                .commit()
-                        }
-                        R.id.menu_movies -> {
-                            Log.d("ActivityMain", "Menu hot clicked")
-//                            supportFragmentManager.beginTransaction()
-//                                .replace(binding.fragmentContainer.id, MovieFragment::class.java, bundleOf())
-//                                .commit()
-                        }
-                        else -> {
-                            Log.d("ActivityMain", "No deberías estar aqui")
-                        }
+            bottomNavigationView.setOnItemSelectedListener { item ->
+                when (item.itemId) {
+                    R.id.menu_tv_shows -> {
+                        Log.d("ActivityMain", "Menu top clicked")
+                        supportFragmentManager.beginTransaction()
+                            .replace(
+                                binding.fragmentContainer.id,
+                                TvShowFragment::class.java,
+                                bundleOf()
+                            )
+                            .commit()
                     }
-
-                    return false
+                    R.id.menu_movies -> {
+                        Log.d("ActivityMain", "Menu hot clicked")
+                        supportFragmentManager.beginTransaction()
+                            .replace(binding.fragmentContainer.id, MovieFragment::class.java, bundleOf())
+                            .commit()
+                    }
+                    else -> {
+                        Log.d("ActivityMain", "No deberías estar aqui")
+                    }
                 }
-            })
+
+                false
+            }
         }
     }
 }

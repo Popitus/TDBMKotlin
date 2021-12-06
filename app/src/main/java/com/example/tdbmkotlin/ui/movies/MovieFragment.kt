@@ -1,4 +1,4 @@
-package com.example.tdbmkotlin.ui.tvshows
+package com.example.tdbmkotlin.ui.movies
 
 import android.os.Bundle
 import android.view.View
@@ -12,20 +12,18 @@ import com.keepcoding.imgram.visible
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class TvShowFragment: Fragment(R.layout.fragment_main) {
+class MovieFragment: Fragment(R.layout.fragment_main) {
 
     /** Properties **/
     private val binding: FragmentMainBinding by viewBinding()
-    private val viewModel: TvShowViewModel by viewModels()
-    private lateinit var imageAdapter: TvShowAdapter
+    private val viewModel: MovieViewModel by viewModels()
+    private lateinit var imageAdapter: MovieAdapter
 
-
-    /** Lifecicle **/
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        imageAdapter = TvShowAdapter()
+        imageAdapter = MovieAdapter()
 
-        /** binding **/
+        /** Binding **/
         with(binding) {
             imageList.adapter = imageAdapter
             imageList.layoutManager = GridLayoutManager(context, 2)
@@ -36,8 +34,6 @@ class TvShowFragment: Fragment(R.layout.fragment_main) {
             imageAdapter.addAll(it)
             binding.progress.visible(false)
         }
-
     }
-
 
 }

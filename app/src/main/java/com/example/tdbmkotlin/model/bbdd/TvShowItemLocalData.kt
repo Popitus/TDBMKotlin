@@ -1,4 +1,4 @@
-package com.example.tdbmkotlin.model
+package com.example.tdbmkotlin.model.bbdd
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

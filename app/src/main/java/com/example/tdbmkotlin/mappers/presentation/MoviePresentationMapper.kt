@@ -14,4 +14,8 @@ class MoviePresentationMapper @Inject constructor() {
         return MoviePresentation(data.id, data.title, data.posterPath, data.popularity, data.releaseDate)
     }
 
+    fun mapPresentationToData(presentation: MoviePresentation): MovieItemData {
+        return MovieItemData(presentation.id, presentation.title, presentation.posterPath, presentation.popularity, presentation.releaseDate)
+    }
+
 }

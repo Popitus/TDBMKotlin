@@ -1,6 +1,6 @@
 package com.example.tdbmkotlin.mappers.data
 
-import com.example.tdbmkotlin.model.TvShowItemLocalData
+import com.example.tdbmkotlin.model.bbdd.TvShowItemLocalData
 import com.keepcoding.imgram.model.data.TvShowItemData
 import com.keepcoding.imgram.model.network.TvShowItemNetworkData
 import javax.inject.Inject
