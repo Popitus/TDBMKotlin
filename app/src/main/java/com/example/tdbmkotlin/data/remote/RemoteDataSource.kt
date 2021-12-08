@@ -6,7 +6,7 @@ import javax.inject.Inject
 
 class RemoteDataSource @Inject constructor(private val api: TheMovieDBApi) {
 
-    /** Functions **/
+    /** TvShows Functions **/
 
     // Shows (Tops)
     suspend fun getTopShows(): List<TvShowItemNetworkData> {
@@ -14,7 +14,13 @@ class RemoteDataSource @Inject constructor(private val api: TheMovieDBApi) {
         return pagedResultData.results
     }
 
-    // Movies (Popular)
+    suspend fun getTvShowById(id: Long): List<TvShowItemNetworkData> {
+        val pagedResultData = api.getTvShowById(id)
+        return pagedResultData.results
+    }
+
+    /** Movies Functions **/
+
     suspend fun getPopularMovies(): List<MovieItemNetworkData> {
         val pagedResultData = api.getPopularMovies()
         return pagedResultData.results

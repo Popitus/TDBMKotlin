@@ -36,6 +36,11 @@ class Repository @Inject constructor(
         return result
     }
 
+    suspend fun getTvShowById(id: Long): List<TvShowItemNetworkData> {
+        val remoteResult = remoteDataSource.getTvShowById(id)
+        return remoteResult
+    }
+
     // Movies
 
     suspend fun getPopularMovies(): List<MovieItemData> {
@@ -48,6 +53,7 @@ class Repository @Inject constructor(
         }
         return result
     }
+
 
     /** Private Functions **/
 

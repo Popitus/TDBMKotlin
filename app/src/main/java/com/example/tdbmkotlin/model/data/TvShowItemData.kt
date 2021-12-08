@@ -5,5 +5,6 @@ data class TvShowItemData(
     var name: String?,
     var posterPath: String?,
     var voted: Double?,
+    var overview: String?,
 
 )

@@ -15,7 +15,7 @@
         android:name=".App"
         android:theme="@style/Theme.TDBMKotlin">
         <activity android:name=".ui.MainActivity" />
-        <activity android:name=".ui.tvshows.TvShowDetailActivity"
+        <activity android:name=".ui.detail.TvShowDetailActivity"
             android:parentActivityName=".ui.MainActivity"
             />
         <activity

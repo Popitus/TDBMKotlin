@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.tdbmkotlin.R
 import com.example.tdbmkotlin.databinding.FragmentMainBinding
 import com.example.tdbmkotlin.model.presentation.TvShowPresentation
-import com.example.tdbmkotlin.ui.MainActivity
 import com.example.tdbmkotlin.ui.commons.viewBinding
+import com.example.tdbmkotlin.ui.detail.TvShowDetailActivity
 import com.keepcoding.imgram.visible
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -22,6 +22,7 @@ class TvShowFragment: Fragment(R.layout.fragment_main) {
     private val viewModel: TvShowViewModel by viewModels()
     private val imageAdapter = TvShowAdapter {
         detailView(it)
+        viewModel
     }
 
 

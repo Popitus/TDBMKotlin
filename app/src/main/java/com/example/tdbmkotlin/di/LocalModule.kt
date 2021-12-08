@@ -21,7 +21,9 @@ class LocalModule {
         return Room.databaseBuilder(
             context,
             TheMovieDBDatabase::class.java, "the_movie_db_example"
-        ).build()
+        )
+            .fallbackToDestructiveMigration()
+            .build()
     }
 
     @Provides
