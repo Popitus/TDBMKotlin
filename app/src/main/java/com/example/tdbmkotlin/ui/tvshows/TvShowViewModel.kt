@@ -1,11 +1,15 @@
 package com.example.tdbmkotlin.ui.tvshows
 
+import android.content.Intent
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.tdbmkotlin.data.Repository
 import com.example.tdbmkotlin.mappers.presentation.TvShowPresentationMapper
 import com.example.tdbmkotlin.model.presentation.TvShowPresentation
+import com.example.tdbmkotlin.ui.MainActivity
+import com.keepcoding.imgram.Properties
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -27,7 +31,7 @@ class TvShowViewModel @Inject constructor(private val repository: Repository,
         getTvShows()
     }
 
-    /** Functions **/
+    /** Private Functions **/
     private fun getTvShows(){
         viewModelScope.launch {
             val result = withContext(Dispatchers.IO) {
@@ -37,17 +41,5 @@ class TvShowViewModel @Inject constructor(private val repository: Repository,
             _images.postValue(mapper.mapDataToPresentation(sortedResult))
         }
     }
-
-    fun getTvShow(itemPresentation: TvShowPresentation){
-        viewModelScope.launch {
-            val result = withContext(Dispatchers.IO){
-                itemPresentation.id?.also {
-                    repository.getTvShow(it)
-                }
-            }
-
-        }
-    }
-
 
 }

@@ -9,11 +9,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.tdbmkotlin.R
 import com.example.tdbmkotlin.databinding.FragmentMainBinding
 import com.example.tdbmkotlin.model.presentation.TvShowPresentation
+import com.example.tdbmkotlin.ui.MainActivity
 import com.example.tdbmkotlin.ui.commons.viewBinding
-import com.example.tdbmkotlin.ui.detail.DetailActivity
-import com.example.tdbmkotlin.utils.DetailTvShowClickListener
-import com.keepcoding.imgram.Properties
-import com.keepcoding.imgram.model.data.TvShowItemData
 import com.keepcoding.imgram.visible
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -23,15 +20,14 @@ class TvShowFragment: Fragment(R.layout.fragment_main) {
     /** Properties **/
     private val binding: FragmentMainBinding by viewBinding()
     private val viewModel: TvShowViewModel by viewModels()
-    private lateinit var imageAdapter: TvShowAdapter
+    private val imageAdapter = TvShowAdapter {
+        detailView(it)
+    }
 
 
     /** Lifecicle **/
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        imageAdapter = TvShowAdapter {
-            viewModel
-        }
 
         /** binding **/
         with(binding) {
@@ -44,6 +40,18 @@ class TvShowFragment: Fragment(R.layout.fragment_main) {
             imageAdapter.addAll(it)
             binding.progress.visible(false)
         }
+
+    }
+
+    /** Private Functions **/
+    fun detailView(it: TvShowPresentation) {
+        val intent = Intent(this@TvShowFragment.requireContext(), TvShowDetailActivity::class.java)
+        intent.putExtra("id",it.id)
+        intent.putExtra("name",it.name)
+        intent.putExtra("posterPath",it.posterPath)
+        intent.putExtra("voted",it.voted)
+        startActivity(intent)
+        println("${it}")
 
     }
 }

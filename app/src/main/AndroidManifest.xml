@@ -15,6 +15,9 @@
         android:name=".App"
         android:theme="@style/Theme.TDBMKotlin">
         <activity android:name=".ui.MainActivity" />
+        <activity android:name=".ui.tvshows.TvShowDetailActivity"
+            android:parentActivityName=".ui.MainActivity"
+            />
         <activity
             android:theme="@style/SplashTheme"
             android:name=".SplashActivity"

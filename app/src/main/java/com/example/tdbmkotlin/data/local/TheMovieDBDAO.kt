@@ -15,9 +15,6 @@ interface TheMovieDBDAO {
     @Query("SELECT * FROM tv_shows order by name DESC")
     fun getTvShows(): List<TvShowItemLocalData>
 
-    @Query("SELECT id FROM tv_shows")
-    fun getTvShow(itemId: Long)
-
     @Insert
     fun insertTvShow(item: TvShowItemLocalData): Long
 

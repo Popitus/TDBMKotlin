@@ -41,14 +41,16 @@ class TvShowAdapter(
     }
 
     /** Inner Class **/
-    inner class ImageViewHolder(itemView: View): RecyclerView.ViewHolder(itemView), View.OnClickListener {
+    inner class ImageViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
         /** Properties of Inner class **/
         private val binding = ItemListBinding.bind(itemView)
         private lateinit var item: TvShowPresentation
 
         init {
-            itemView.setOnClickListener(this)
+            binding.image.setOnClickListener {
+                clickListener(item)
+            }
         }
 
         fun bind (item:TvShowPresentation) {
@@ -65,10 +67,6 @@ class TvShowAdapter(
                 }
             }
 
-        override fun onClick(v: View?) {
-            val result = data[adapterPosition]
-            clickListener.invoke(result)
-        }
     }
 
 }
