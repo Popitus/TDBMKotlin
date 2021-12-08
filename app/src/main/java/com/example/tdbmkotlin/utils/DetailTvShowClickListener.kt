@@ -1,8 +1,8 @@
 package com.example.tdbmkotlin.utils
 
-import com.keepcoding.imgram.model.data.TvShowItemData
+import com.example.tdbmkotlin.model.presentation.TvShowPresentation
 
 interface DetailTvShowClickListener {
 
-    fun onClick(tvShowItemData: TvShowItemData)
+    fun onClick(tvShowItemData: TvShowPresentation)
 }

@@ -14,12 +14,10 @@ import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity(), DetailTvShowClickListener {
+class MainActivity : AppCompatActivity() {
 
     /** Properties **/
     private lateinit var binding: ActivityMainBinding
-
-
 
     /** Lifecicle **/
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,7 +60,4 @@ class MainActivity : AppCompatActivity(), DetailTvShowClickListener {
         }
     }
 
-    override fun onClick(tvShowItemData: TvShowItemData) {
-        TODO("Not yet implemented")
-    }
 }

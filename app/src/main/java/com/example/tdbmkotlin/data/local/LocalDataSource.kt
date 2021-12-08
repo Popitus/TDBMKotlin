@@ -12,6 +12,10 @@ class LocalDataSource @Inject constructor(private val dao: TheMovieDBDAO) {
         return dao.getTvShows()
     }
 
+    fun getTvShow(id: Long) {
+        dao.getTvShow(id)
+    }
+
     fun insertTvShow(itemLocalData: TvShowItemLocalData){
         dao.insertTvShow(itemLocalData)
     }

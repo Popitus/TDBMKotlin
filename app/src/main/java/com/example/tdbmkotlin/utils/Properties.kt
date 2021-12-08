@@ -6,4 +6,5 @@ object Properties {
     const val NETWORK_CLIENT_TIMEOUT: Long = 120
     const val BASE_URL = "https://api.themoviedb.org/"
     const val API_KEY = "0f7ed2b80acec30d85edc30aa1bd17ca"
+    const val TV_SHOW = "TvShowDetail"
 }

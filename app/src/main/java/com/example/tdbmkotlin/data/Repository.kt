@@ -36,6 +36,10 @@ class Repository @Inject constructor(
         return result
     }
 
+    suspend fun getTvShow(id: Long) {
+        localDataSource.getTvShow(id)
+    }
+
     // Movies
 
     suspend fun getPopularMovies(): List<MovieItemData> {

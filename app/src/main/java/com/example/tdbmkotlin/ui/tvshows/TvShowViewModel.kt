@@ -38,5 +38,16 @@ class TvShowViewModel @Inject constructor(private val repository: Repository,
         }
     }
 
+    fun getTvShow(itemPresentation: TvShowPresentation){
+        viewModelScope.launch {
+            val result = withContext(Dispatchers.IO){
+                itemPresentation.id?.also {
+                    repository.getTvShow(it)
+                }
+            }
+
+        }
+    }
+
 
 }
