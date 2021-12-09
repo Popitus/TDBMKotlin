@@ -13,7 +13,10 @@ interface TheMovieDBApi {
     suspend fun getTopRatedTvShows(): PagedResultData<TvShowItemNetworkData>
 
     @GET("3/tv/{tv_id}")
-    suspend fun getTvShowById(@Path("tv_id") id: Long): PagedResultData<TvShowItemNetworkData>
+    suspend fun getTvShowById(@Path("tv_id") id: Long): TvShowItemNetworkData
+
+    @GET("3/tv/{tv_id}/recommendations")
+    suspend fun getTvShowRecommendationById(@Path("tv_id") id: Long): PagedResultData<TvShowItemNetworkData>
 
     // Movies
     @GET("/3/movie/popular")

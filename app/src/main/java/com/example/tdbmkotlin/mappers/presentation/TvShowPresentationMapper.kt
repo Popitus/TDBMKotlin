@@ -12,11 +12,19 @@ class TvShowPresentationMapper @Inject constructor() {
     }
 
     fun mapDataToPresentation(data: TvShowItemData): TvShowPresentation {
-        return TvShowPresentation(data.id, data.name, data.posterPath, data.voted, data.overview)
+        return TvShowPresentation(data.id,
+            data.name,
+            data.posterPath,
+            data.voted,
+            data.overview)
     }
 
     fun mapPresentationToData(presentation: TvShowPresentation): TvShowItemData {
-        return TvShowItemData(presentation.id, presentation.name, presentation.posterPath, presentation.voted, presentation.overview)
+        return TvShowItemData(presentation.id,
+            presentation.name,
+            presentation.posterPath,
+            presentation.voted,
+            presentation.overview)
     }
 
     fun mapNetWorkToPresentation(data: List<TvShowItemNetworkData>): List<TvShowPresentation> {
@@ -24,7 +32,11 @@ class TvShowPresentationMapper @Inject constructor() {
     }
 
     fun mapNetWorkToPresentation(data: TvShowItemNetworkData): TvShowPresentation {
-        return TvShowPresentation(data.id, data.name, data.posterPath, data.voteAverage, data.overview)
+        return TvShowPresentation(data.id,
+            data.name,
+            data.posterPath,
+            data.voteAverage,
+            data.overview)
     }
 
 

@@ -36,8 +36,13 @@ class Repository @Inject constructor(
         return result
     }
 
-    suspend fun getTvShowById(id: Long): List<TvShowItemNetworkData> {
+    suspend fun getTvShowById(id: Long): TvShowItemNetworkData {
         val remoteResult = remoteDataSource.getTvShowById(id)
+        return remoteResult
+    }
+
+    suspend fun getTvShowRecommendationById(id: Long): List<TvShowItemNetworkData> {
+        val remoteResult = remoteDataSource.getTvShowRecommendationById(id)
         return remoteResult
     }
 

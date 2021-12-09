@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -31,6 +32,17 @@
             android:textStyle="bold|italic" />
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/fav_button"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="bottom|end"
+        android:background="@drawable/ic_baseline_white_24"
+        android:layout_marginEnd="18dp"
+        android:layout_marginBottom="48dp"
+        />
+
 
     <LinearLayout
         android:layout_width="wrap_content"

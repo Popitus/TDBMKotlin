@@ -1,5 +1,6 @@
 package com.example.tdbmkotlin.ui.detail
 
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -8,6 +9,7 @@ import com.example.tdbmkotlin.mappers.presentation.TvShowPresentationMapper
 import com.example.tdbmkotlin.model.presentation.TvShowPresentation
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -17,22 +19,41 @@ class TvShowDetailViewModel @Inject constructor(private val repository: Reposito
                                                 private val mapper: TvShowPresentationMapper): ViewModel() {
 
     /** Properties **/
-    private val _images: MutableLiveData<List<TvShowPresentation>> by lazy {
+    private val _images: MutableLiveData<TvShowPresentation> by lazy {
+        MutableLiveData<TvShowPresentation>()
+    }
+    val images: MutableLiveData<TvShowPresentation> get() = _images
+
+    private val _imagesRecommendation: MutableLiveData<List<TvShowPresentation>> by lazy {
         MutableLiveData<List<TvShowPresentation>>()
     }
-    val images: MutableLiveData<List<TvShowPresentation>> get() = _images
+    val imagesRecommendation: MutableLiveData<List<TvShowPresentation>> get() = _imagesRecommendation
+
+    private var coroutine: Job? = null
 
     /** Functions **/
     fun getTvShowById(id: Long) {
         viewModelScope.launch {
             val result = withContext(Dispatchers.IO) {
-                //TODO: llamada a repositorio
                 repository.getTvShowById(id)
             }
-            //TODO: Recogida de datos
             _images.postValue(mapper.mapNetWorkToPresentation(result))
-
         }
+    }
+
+    fun launchCoroutineGlobal(context: AppCompatActivity) {
+
+
+    }
+
+    fun getTvShowRecommendationById(id: Long) {
+        viewModelScope.launch {
+            val result = withContext(Dispatchers.IO) {
+                repository.getTvShowRecommendationById(id)
+            }
+            _imagesRecommendation.postValue(mapper.mapNetWorkToPresentation(result))
+        }
+
     }
 
 
