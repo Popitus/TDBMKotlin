@@ -3,14 +3,12 @@ package com.example.tdbmkotlin.ui.tvshows
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ExpandableListView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.tdbmkotlin.R
 import com.example.tdbmkotlin.databinding.ItemListBinding
 import com.example.tdbmkotlin.model.presentation.TvShowPresentation
-import com.example.tdbmkotlin.utils.DetailTvShowClickListener
 
 class TvShowAdapter(
     private val clickListener: (TvShowPresentation) -> Unit

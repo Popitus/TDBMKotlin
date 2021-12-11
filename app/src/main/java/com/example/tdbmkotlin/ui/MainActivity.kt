@@ -6,10 +6,8 @@ import android.util.Log
 import androidx.core.os.bundleOf
 import com.example.tdbmkotlin.R
 import com.example.tdbmkotlin.databinding.ActivityMainBinding
-import com.example.tdbmkotlin.utils.DetailTvShowClickListener
 import com.example.tdbmkotlin.ui.movies.MovieFragment
 import com.example.tdbmkotlin.ui.tvshows.TvShowFragment
-import com.keepcoding.imgram.model.data.TvShowItemData
 import dagger.hilt.android.AndroidEntryPoint
 
 

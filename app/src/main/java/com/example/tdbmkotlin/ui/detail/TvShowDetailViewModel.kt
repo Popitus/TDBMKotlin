@@ -8,10 +8,7 @@ import com.example.tdbmkotlin.data.Repository
 import com.example.tdbmkotlin.mappers.presentation.TvShowPresentationMapper
 import com.example.tdbmkotlin.model.presentation.TvShowPresentation
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 import javax.inject.Inject
 
 @HiltViewModel
@@ -35,26 +32,28 @@ class TvShowDetailViewModel @Inject constructor(private val repository: Reposito
     fun getTvShowById(id: Long) {
         viewModelScope.launch {
             val result = withContext(Dispatchers.IO) {
+                getTvShowRecommendationById(id)
                 repository.getTvShowById(id)
             }
             _images.postValue(mapper.mapNetWorkToPresentation(result))
         }
     }
 
-    fun launchCoroutineGlobal(context: AppCompatActivity) {
-
-
-    }
-
     fun getTvShowRecommendationById(id: Long) {
         viewModelScope.launch {
-            val result = withContext(Dispatchers.IO) {
-                repository.getTvShowRecommendationById(id)
+            val result = async(Dispatchers.IO) {
+                return@async repository.getTvShowRecommendationById(id)
             }
-            _imagesRecommendation.postValue(mapper.mapNetWorkToPresentation(result))
+            _imagesRecommendation.postValue(mapper.mapNetWorkToPresentation(result.await()))
         }
+    }
+
+    fun launch(context: AppCompatActivity) {
+
 
     }
+
+
 
 
 }
