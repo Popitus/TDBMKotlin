@@ -16,7 +16,8 @@ class TvShowPresentationMapper @Inject constructor() {
             data.name,
             data.posterPath,
             data.voted,
-            data.overview)
+            data.overview,
+            data.favorited)
     }
 
     fun mapPresentationToData(presentation: TvShowPresentation): TvShowItemData {
@@ -24,7 +25,8 @@ class TvShowPresentationMapper @Inject constructor() {
             presentation.name,
             presentation.posterPath,
             presentation.voted,
-            presentation.overview)
+            presentation.overview,
+            presentation.favorited)
     }
 
     fun mapNetWorkToPresentation(data: List<TvShowItemNetworkData>): List<TvShowPresentation> {
@@ -36,7 +38,7 @@ class TvShowPresentationMapper @Inject constructor() {
             data.name,
             data.posterPath,
             data.voteAverage,
-            data.overview)
+            data.overview,false)
     }
 
 

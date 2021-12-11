@@ -12,9 +12,4 @@
         android:title="@string/menu_movies_label"
         android:icon="@mipmap/ic_launcher"/>
 
-    <item
-        android:id="@+id/saves_items"
-        android:title="@string/menu_items_label"
-        android:icon="@mipmap/ic_launcher"/>
-
 </menu>

@@ -61,11 +61,18 @@ class TvShowAdapter(
                     .into(image)
 
                 votedRating.text = "%.2f".format(item.voted)
+                println("Oliver -> TvShowAdapter -> ${item.favorited}")
+                if (item.favorited == false) {
+                    favButton.background = ContextCompat.getDrawable(itemView.context,
+                        R.drawable.ic_launcher_foreground
+                    )
+                } else {
+                    favButton.background = ContextCompat.getDrawable(itemView.context, R.drawable.ic_baseline_white_24)
+                }
 
                 }
             }
 
     }
-
 }
 

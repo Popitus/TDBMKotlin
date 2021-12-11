@@ -40,6 +40,7 @@ class TvShowFragment: Fragment(R.layout.fragment_main) {
         viewModel.images.observe(this) {
             imageAdapter.addAll(it)
             binding.progress.visible(false)
+
         }
 
     }
@@ -51,6 +52,7 @@ class TvShowFragment: Fragment(R.layout.fragment_main) {
         intent.putExtra("name",it.name)
         intent.putExtra("posterPath",it.posterPath)
         intent.putExtra("voted",it.voted)
+        intent.putExtra("favorited", it.favorited)
         startActivity(intent)
         println("${it}")
 

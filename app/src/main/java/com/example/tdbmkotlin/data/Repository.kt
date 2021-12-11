@@ -46,6 +46,10 @@ class Repository @Inject constructor(
         return remoteResult
     }
 
+    suspend fun favoriteTvShow(id: Long, favorite: Boolean) {
+        localDataSource.favoriteTvShow(id, favorite)
+    }
+
     // Movies
 
     suspend fun getPopularMovies(): List<MovieItemData> {

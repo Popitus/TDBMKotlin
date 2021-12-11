@@ -26,9 +26,10 @@ class TvShowDetailViewModel @Inject constructor(private val repository: Reposito
     }
     val imagesRecommendation: MutableLiveData<List<TvShowPresentation>> get() = _imagesRecommendation
 
-    private var coroutine: Job? = null
-
     /** Functions **/
+
+
+
     fun getTvShowById(id: Long) {
         viewModelScope.launch {
             val result = withContext(Dispatchers.IO) {
@@ -39,7 +40,21 @@ class TvShowDetailViewModel @Inject constructor(private val repository: Reposito
         }
     }
 
-    fun getTvShowRecommendationById(id: Long) {
+    fun favoriteTvShow(itemPresentation: TvShowPresentation, favorited: Boolean) {
+
+//        var fav = itemPresentation.favorited
+//        fav = fav != true
+
+        viewModelScope.launch {
+            async(Dispatchers.IO) {
+                itemPresentation.id?.also {
+                    return@async repository.favoriteTvShow(it, favorited)
+                }
+            }
+        }
+    }
+
+    private fun getTvShowRecommendationById(id: Long) {
         viewModelScope.launch {
             val result = async(Dispatchers.IO) {
                 return@async repository.getTvShowRecommendationById(id)
@@ -48,10 +63,8 @@ class TvShowDetailViewModel @Inject constructor(private val repository: Reposito
         }
     }
 
-    fun launch(context: AppCompatActivity) {
 
 
-    }
 
 
 

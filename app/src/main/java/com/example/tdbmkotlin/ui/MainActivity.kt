@@ -45,9 +45,6 @@ class MainActivity : AppCompatActivity() {
                             .replace(binding.fragmentContainer.id, MovieFragment::class.java, bundleOf())
                             .commit()
                     }
-                    R.id.saves_items -> {
-                        Log.d("ActivityMain", "Saves Clicked")
-                    }
                     else -> {
                         Log.d("ActivityMain", "No deberías estar aqui")
                     }
