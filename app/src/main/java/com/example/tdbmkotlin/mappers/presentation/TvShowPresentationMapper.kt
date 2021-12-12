@@ -17,6 +17,7 @@ class TvShowPresentationMapper @Inject constructor() {
             data.posterPath,
             data.voted,
             data.overview,
+            data.firstDate,
             data.favorited)
     }
 
@@ -26,6 +27,7 @@ class TvShowPresentationMapper @Inject constructor() {
             presentation.posterPath,
             presentation.voted,
             presentation.overview,
+            presentation.firstDate,
             presentation.favorited)
     }
 
@@ -38,7 +40,9 @@ class TvShowPresentationMapper @Inject constructor() {
             data.name,
             data.posterPath,
             data.voteAverage,
-            data.overview,false)
+            data.overview,
+            data.firstDate,
+            false)
     }
 
 

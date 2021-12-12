@@ -16,6 +16,7 @@ class TvShowDetailViewModel @Inject constructor(private val repository: Reposito
                                                 private val mapper: TvShowPresentationMapper): ViewModel() {
 
     /** Properties **/
+
     private val _images: MutableLiveData<TvShowPresentation> by lazy {
         MutableLiveData<TvShowPresentation>()
     }
@@ -27,8 +28,6 @@ class TvShowDetailViewModel @Inject constructor(private val repository: Reposito
     val imagesRecommendation: MutableLiveData<List<TvShowPresentation>> get() = _imagesRecommendation
 
     /** Functions **/
-
-
 
     fun getTvShowById(id: Long) {
         viewModelScope.launch {
@@ -42,9 +41,6 @@ class TvShowDetailViewModel @Inject constructor(private val repository: Reposito
 
     fun favoriteTvShow(itemPresentation: TvShowPresentation, favorited: Boolean) {
 
-//        var fav = itemPresentation.favorited
-//        fav = fav != true
-
         viewModelScope.launch {
             async(Dispatchers.IO) {
                 itemPresentation.id?.also {
@@ -53,6 +49,8 @@ class TvShowDetailViewModel @Inject constructor(private val repository: Reposito
             }
         }
     }
+
+    /** Private Functions **/
 
     private fun getTvShowRecommendationById(id: Long) {
         viewModelScope.launch {

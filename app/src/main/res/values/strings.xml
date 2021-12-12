@@ -3,4 +3,7 @@
     <string name="menu_tv_shows_label">Shows</string>
     <string name="menu_movies_label">Movies</string>
     <string name="menu_items_label">saves</string>
+    <string name="add_tvshow">Add tvShow</string>
+    <string name="sugesstion">Sugesstion</string>
+    <string name="random_sugesstion">Random Sugesstion</string>
 </resources>

@@ -11,6 +11,7 @@ import com.example.tdbmkotlin.databinding.DetailViewBinding
 import com.example.tdbmkotlin.utils.randomTvShow
 import com.keepcoding.imgram.visible
 import dagger.hilt.android.AndroidEntryPoint
+import kotlin.random.Random
 
 @AndroidEntryPoint
 class TvShowDetailActivity: AppCompatActivity() {
@@ -28,33 +29,33 @@ class TvShowDetailActivity: AppCompatActivity() {
         binding = DetailViewBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val id = intent.getLongExtra("id", 0)
+        println("Oliver -> id ${id}")
 
         if (intent.getStringExtra("name") != null) {
             with (binding) {
-                nameText.text = intent.getStringExtra("name")
-                //idText.text = intent.getLongExtra("id", 0).toString()
-                popularityText.text = "Voted: " + intent.getDoubleExtra("voted", 0.0).toString()
+                tvShowTitle.text = intent.getStringExtra("name")
+                tvShowRating.rating = intent.getDoubleExtra("voted", 0.0).toFloat()/2
 
                 Glide.with(this@TvShowDetailActivity)
                     .load("https://image.tmdb.org/t/p/w500/${intent.getStringExtra("posterPath")}")
                     .placeholder(ContextCompat.getDrawable(this@TvShowDetailActivity, R.mipmap.ic_launcher))
-                    .into(imagePosterBig)
+                    .into(tvShowBackdrop)
 
                 Glide.with(this@TvShowDetailActivity)
                     .load("https://image.tmdb.org/t/p/w500/${intent.getStringExtra("posterPath")}")
                     .placeholder(ContextCompat.getDrawable(this@TvShowDetailActivity, R.mipmap.ic_launcher))
-                    .into(imagePoster)
+                    .into(tvShowPoster)
 
 
                 progress.visible(true)
-                linearLayoutOverview.visible(false)
-                linearLayoutRecommend.visible(false)
+                tvShowPosterCardRecommedation.visible(false)
+                tvShowOverviewRecommendation.visible(false)
             }
             favorited = intent.getBooleanExtra("favorited",false)
             if (favorited) {
-                binding.buttonFavorite.text = "remove"
+                binding.buttonFavorite.text = "Remove TvShow"
             } else {
-                binding.buttonFavorite.text = "add"
+                binding.buttonFavorite.text = "Add TvShow"
             }
 
             viewModel.getTvShowById(id)
@@ -62,11 +63,7 @@ class TvShowDetailActivity: AppCompatActivity() {
         }
 
         viewModel.images.observe(this) {
-            binding.textOverview.text = it.overview
-            binding.linearLayoutOverview.visible(true)
-            binding.linearLayoutRecommend.visible(true)
-            binding.progress.visible(false)
-
+            binding.tvShowOverview.text = it.overview
             val itemTvShowPresentation = it
 
             binding.buttonFavorite.setOnClickListener{
@@ -76,10 +73,10 @@ class TvShowDetailActivity: AppCompatActivity() {
                     viewModel.favoriteTvShow(itemTvShowPresentation, !favorited)
                 }
 
-                if (binding.buttonFavorite.text == "add") {
-                    binding.buttonFavorite.text = "remove"
+                if (binding.buttonFavorite.text == "Add TvShow") {
+                    binding.buttonFavorite.text = "Remove TvShow"
                 } else {
-                    binding.buttonFavorite.text = "add"
+                    binding.buttonFavorite.text = "Add TvShow"
                 }
 
             }
@@ -88,9 +85,19 @@ class TvShowDetailActivity: AppCompatActivity() {
 
         viewModel.imagesRecommendation.observe(this) {
 
-            binding.tvShowFirst.text = randomTvShow(it)
-            binding.tvShowSecond.text = randomTvShow(it)
-            binding.tvShowThird.text = randomTvShow(it)
+            val randomIndex = Random.nextInt(it.size)
+            val result = it[randomIndex]
+            binding.tvShowOverviewRecommendation.text = result.overview
+            Glide.with(this@TvShowDetailActivity)
+                .load("https://image.tmdb.org/t/p/w500/${result.posterPath}")
+                .placeholder(ContextCompat.getDrawable(this@TvShowDetailActivity, R.mipmap.ic_launcher))
+                .into(binding.tvShowPosterSuggestion)
+            binding.tvShowRecommendationNameText.text = result.name
+            binding.tvShowReleaseDate.text = result.firstDate
+
+            binding.progress.visible(false)
+            binding.tvShowPosterCardRecommedation.visible(true)
+            binding.tvShowOverviewRecommendation.visible(true)
 
         }
 
